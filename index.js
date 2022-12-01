@@ -16,7 +16,7 @@ bodyEl.addEventListener("mousemove", (event) => {
 });
 
 $(function(){
-toastr.success("Move your mouse plz :D !!", "HI !!");
+toastr.success("Move your mouse plz :D !!", "HI !!"); /*for caution message*/
 
 })
 
