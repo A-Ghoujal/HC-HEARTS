@@ -30,7 +30,7 @@ body {
     text-align: center;
     max-height: 100vh;
     margin: auto;
-    font-size: 200px;
+    font-size: 250px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #000000;
     text-shadow: 0 0 5px rgb(0, 13, 250),
@@ -51,6 +51,13 @@ body {
     100% {
       transform: translate(-50%, -5000%);
       opacity: 0;
+      
+    }
+  } 
+
+  @media (max-width: 800px){
+    h1 {
+      font-size: 100px;
       
     }
   }
