@@ -1,14 +1,16 @@
+
+import config from './config.js';
+
 const bodyEl = document.querySelector("body");
 
 bodyEl.addEventListener("mousemove", (event) => {
-  const xPos = event.offsetX;
-  const yPos = event.offsetY;
+  const { offsetX: xPos, offsetY: yPos } = event;
   const spanEl = document.createElement("span");
-  spanEl.style.left = xPos + "px";
-  spanEl.style.top = yPos + "px";
+  spanEl.style.left = `${xPos}px`;
+  spanEl.style.top = `${yPos}px`;
   const size = Math.random() * 120;
-  spanEl.style.width = size + "px";
-  spanEl.style.height = size + "px";
+  spanEl.style.width = `${size}px`;
+  spanEl.style.height = `${size}px`;
   bodyEl.appendChild(spanEl);
   setTimeout(() => {
     spanEl.remove();
@@ -53,11 +55,11 @@ async function getCityTemperature() {
   try {
     const response = await fetch("https://ipapi.co/json/");
     const data = await response.json();
-    const city = data.city;
-    const apiKey = "c07857538fffb700a1d46f5fb441468d";
+    const { city } = data;
+    const { openWeatherMapApiKey: apiKey } = config;
     const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
     const weatherData = await weatherResponse.json();
-    const temperature = weatherData.main.temp;
+    const { main: { temp: temperature } } = weatherData;
     return temperature;
   } catch (error) {
     console.error("Error fetching weather data:", error);
