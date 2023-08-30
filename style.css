@@ -33,8 +33,16 @@ body {
                  0 0 20px rgb(0, 17, 255), 
                  0 0 30px rgb(8, 0, 255), 
                  0 0 40px rgb(0, 85, 255), 
-                 0 0 55px rgb(0, 26, 255), 
+                 0 0 55px #001aff, 
                  0 0 70px rgb(13, 0, 255);
+  }
+
+  #clock {
+    font-size: 48px;
+    font-weight: bold;
+    color: #0008fe;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: Arial, sans-serif;
   }
   
   @keyframes animate {
