@@ -16,9 +16,12 @@ bodyEl.addEventListener("mousemove", (event) => {
 });
 
 $(function(){
-toastr.success("Move your mouse plz :D !!", "HI !!"); /*for caution message*/
-
+  toastr.success("Move your mouse plz :D !!", "HI !!"); /*for caution message*/
 })
+
+const clockElement = document.getElementById('clock');
+const toggleSwitch = document.getElementById('toggle');
+let isDarkTheme = false;
 
 function updateClock() {
   const now = new Date();
@@ -26,10 +29,9 @@ function updateClock() {
   const minutes = now.getMinutes().toString().padStart(2, '0');
   const seconds = now.getSeconds().toString().padStart(2, '0');
   const day = now.toLocaleString('en-us', { weekday: 'long' });
-  const date = now.toLocaleDateString('en-US', { year: 'numeric' , month: 'long', day: 'numeric' });
- 
+  const date = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
   const timeString = `${hours}:${minutes}:${seconds}`;
-  const clockElement = document.getElementById('clock');
   clockElement.innerHTML = `
     <div>${day}</div>
     <div>${date}</div>
@@ -37,6 +39,13 @@ function updateClock() {
   `;
 }
 
-// Update the clock immediately and then every second
+function toggleTheme() {
+  isDarkTheme = !isDarkTheme;
+  document.body.classList.toggle('dark-theme', isDarkTheme);
+  updateClock();
+}
+
+// Initialize clock and toggle switch
 updateClock();
+toggleSwitch.addEventListener('change', toggleTheme);
 setInterval(updateClock, 1000);
