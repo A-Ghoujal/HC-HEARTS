@@ -89,6 +89,14 @@ span {
   animation: animate 10s linear;
 }
 
+#temperature{
+  font-size: 28px;
+  font-weight: bold;
+  gap: 1rem;
+  display: flex;
+  z-index: -99;
+  
+}
 #clock {
   font-size: 48px;
   font-weight: bold;

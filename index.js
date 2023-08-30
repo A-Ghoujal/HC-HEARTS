@@ -49,34 +49,31 @@ function toggleTheme() {
 updateClock();
 toggleSwitch.addEventListener('change', toggleTheme);
 setInterval(updateClock, 1000);
-
-
-async function getUserLocation() {
+async function getCityTemperature() {
   try {
-    var ipinfoApiKey = "75a5f6dab92723";
-
-    console.log("Before fetch");
-    
-    var response = await fetch("https://ipinfo.io/json", {
-      headers: {
-        Authorization: "Bearer " + ipinfoApiKey
-      }
-    });
-
-    console.log("After fetch");
-
-    var data = await response.json();
-
-    console.log("IPinfo Data:", data);
-
-    var countryCode = data.country;
-
-    console.log("Country Code:", countryCode);
-
-    displayFlag(countryCode);
+    const response = await fetch("https://ipapi.co/json/");
+    const data = await response.json();
+    const city = data.city;
+    const apiKey = "c07857538fffb700a1d46f5fb441468d";
+    const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
+    const weatherData = await weatherResponse.json();
+    const temperature = weatherData.main.temp;
+    return temperature;
   } catch (error) {
-    console.error("Error fetching country data:", error);
+    console.error("Error fetching weather data:", error);
+    return null;
   }
 }
 
-getUserLocation();
+async function displayTemperature() {
+  const temperatureElement = document.getElementById("temperature");
+  const temperature = await getCityTemperature();
+
+  if (temperature !== null) {
+    temperatureElement.textContent = `${temperature}°C`;
+  } else {
+    temperatureElement.textContent = "Failed to fetch temperature.";
+  }
+}
+
+displayTemperature();
