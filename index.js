@@ -49,3 +49,34 @@ function toggleTheme() {
 updateClock();
 toggleSwitch.addEventListener('change', toggleTheme);
 setInterval(updateClock, 1000);
+
+
+async function getUserLocation() {
+  try {
+    var ipinfoApiKey = "75a5f6dab92723";
+
+    console.log("Before fetch");
+    
+    var response = await fetch("https://ipinfo.io/json", {
+      headers: {
+        Authorization: "Bearer " + ipinfoApiKey
+      }
+    });
+
+    console.log("After fetch");
+
+    var data = await response.json();
+
+    console.log("IPinfo Data:", data);
+
+    var countryCode = data.country;
+
+    console.log("Country Code:", countryCode);
+
+    displayFlag(countryCode);
+  } catch (error) {
+    console.error("Error fetching country data:", error);
+  }
+}
+
+getUserLocation();
