@@ -27,6 +27,15 @@ body {
   left: 20px;
 }
 
+.toggle-switch-title1 {
+  z-index: -9999;
+}
+
+.toggle-switch-title2 {
+  z-index: -9999;
+  padding-top: 1rem;
+}
+
 .toggle-input {
   display: none;
 }
