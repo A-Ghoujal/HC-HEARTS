@@ -25,12 +25,18 @@ function updateClock() {
   const hours = now.getHours().toString().padStart(2, '0');
   const minutes = now.getMinutes().toString().padStart(2, '0');
   const seconds = now.getSeconds().toString().padStart(2, '0');
+  const day = now.toLocaleString('en-us', { weekday: 'long' });
+  const date = now.toLocaleDateString('en-US', { year: 'numeric' , month: 'long', day: 'numeric' });
+ 
   const timeString = `${hours}:${minutes}:${seconds}`;
-  
   const clockElement = document.getElementById('clock');
-  clockElement.textContent = timeString;
+  clockElement.innerHTML = `
+    <div>${day}</div>
+    <div>${date}</div>
+    <div>${timeString}</div>
+  `;
 }
 
-
+// Update the clock immediately and then every second
 updateClock();
 setInterval(updateClock, 1000);
