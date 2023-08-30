@@ -1,3 +1,6 @@
+@import url('https://fonts.cdnfonts.com/css/bubble-letters');
+
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -7,6 +10,7 @@ body {
   max-width: 100%;
   background-color: #f5f5f5; 
   color: #000000; 
+  font-family: 'Bubble Letters', sans-serif;
 }
 
 .main {
