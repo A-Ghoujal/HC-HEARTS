@@ -1,4 +1,4 @@
 
 Showing Some Love To HackYourFutur.
 
-https://a-ghoujal.github.io/HYF-HEARTS/
+https://a-ghoujal.github.io/HC-HEARTS/
