@@ -1,8 +1,6 @@
+A nice statsfying background theme for your browser! :)
 
-Showing Some Love To HackYourFutur.
-
-https://a-ghoujal.github.io/HYF-HEARTS/
-
+https://a-ghoujal.github.io/HC-HEARTS/
 
 ![App view](./image/1.PNG)
 ![App view](./image/2.PNG)
