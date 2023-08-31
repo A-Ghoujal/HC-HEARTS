@@ -1,10 +1,8 @@
-
 import config from './config.js';
 
 const bodyEl = document.querySelector("body");
 
-bodyEl.addEventListener("mousemove", (event) => {
-  const { offsetX: xPos, offsetY: yPos } = event;
+function createHeart(xPos, yPos) {
   const spanEl = document.createElement("span");
   spanEl.style.left = `${xPos}px`;
   spanEl.style.top = `${yPos}px`;
@@ -15,11 +13,21 @@ bodyEl.addEventListener("mousemove", (event) => {
   setTimeout(() => {
     spanEl.remove();
   }, 3000);
-});
+}
+
+function handleInteraction(event) {
+  const { clientX: xPos, clientY: yPos } = event.touches ? event.touches[0] : event;
+  createHeart(xPos, yPos);
+}
+
+bodyEl.addEventListener("mousemove", handleInteraction);
+bodyEl.addEventListener("touchstart", handleInteraction);
 
 $(function(){
-  toastr.success("Move your mouse plz :D !!", "HI !!"); /*for caution message*/
-})
+  toastr.success("Move your mouse or touch the screen :D !!", "HI !!"); /*for caution message*/
+});
+
+// Rest of your code...
 
 const clockElement = document.getElementById('clock');
 const toggleSwitch = document.getElementById('toggle');
